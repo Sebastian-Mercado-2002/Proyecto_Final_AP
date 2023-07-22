@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% block contenido %}
   <h1>Crear nuevo post</h1>
   {% if messages %}
     <ul class="messages">
@@ -14,4 +15,6 @@
     {{ form.as_p }}
     <button type="submit">Guardar</button>
   </form>
+  {% endblock %}
 {% endblock %}
+
