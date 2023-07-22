@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %} 
+
+{% block contenido %}
+    {% block extra_css %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/acerca_de.css' %}">
+    {% endblock %}
+    <h1>Integrantes del Proyecto:</h1>
+    <ul>
+    <li> Mercado, Sebastián</li>
+    <li> Rodriguez Kelly, Maria Jose</li>
+    <li> Saavedra, Valentina Alejandra</li>
+    <li> Britez, Jonas</li>
+    <li> Villa, David Gabriel</li>
+    <li> Margosa, Facundo</li>
+    <li> Ledesma Falchini, Ana Florencia</li>
+    <li> San Cristobal, Juan Manuel</li>
+    </ul>
+    
+{% endblock %}

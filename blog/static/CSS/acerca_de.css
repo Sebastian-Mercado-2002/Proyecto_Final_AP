@@ -1,0 +1,49 @@
+/* Estilo base para el cuerpo del documento */
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #333; /* Color del texto */
+    background-image: url("static/css/fondos/proyecto.png"); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Centrar el contenido */
+  #contenido {
+    max-width: 800px; 
+    margin: 20px auto;
+    padding: 20px;
+    position: relative; /* Para posicionar los elementos hijos relativos */
+    z-index: 1; /* Para asegurarnos de que el contenido esté por encima de la lámina */
+    background-color: rgba(255, 255, 255, 0.8); /* Color y opacidad del fondo del contenido */
+    border-radius: 10px; /* Radio de los bordes del contenido */
+  }
+  
+  /* Estilo para el título principal */
+  h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #EAD41F; /* Color del título principal */
+    margin-bottom: 10px;
+    text-align: center; /* Centrar el título */
+  }
+  
+  /* Estilo para la lista de integrantes */
+  ul {
+    list-style: none; /* Quitar los puntos de la lista */
+    padding: 0;
+  }
+  
+  ul li {
+    margin-bottom: 10px;
+  }
+  
+  /* Estilo para resaltar los nombres de los integrantes */
+  ul li:nth-child(2n) {
+    color: #EAD41F; /* Color para resaltar nombres de integrantes pares */
+    font-weight: bold;
+  }
+  

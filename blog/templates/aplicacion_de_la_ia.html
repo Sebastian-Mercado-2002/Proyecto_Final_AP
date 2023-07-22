@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %} 
+
+{% block contenido %}
+    {% block extra_css %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/aplicacion.css' %}">
+    {% endblock %}
+    <div id="contenido" class="contenido">
+        <h1>Aplicación de la IA</h1>
+        {% for post in posts %}
+            <h3>{{ post.titulo }}</h3>
+            <p>{{ post.texto }}</p>
+            {% if post.imagen %}
+                <img src="{{ post.imagen.url }}" alt="Imagen del post">
+            {% endif %}
+            <h4>Comentarios</h4>
+            {% if user.is_authenticated %}
+                <form method="POST" action="{% url 'agregar_comentario' pk=post.pk %}">
+                    {% csrf_token %}
+                    {{ comentario_form.as_p }}
+                    <button type="submit">Agregar comentario</button>
+                </form>
+            {% endif %}
+            {% for comentario in post.comentarios.all %}
+                <p>{{ comentario.contenido }}</p>
+                {% if user.is_authenticated and user == comentario.autor %}
+                    <a href="{% url 'editar_comentario' pk=comentario.pk %}">Editar</a>
+                    <a href="{% url 'eliminar_comentario' pk=comentario.pk %}">Eliminar</a>
+                {% endif %}
+            {% empty %}
+                <p>No hay comentarios aún.</p>
+            {% endfor %}
+        {% empty %}
+            <p>No hay posts disponibles.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+    <h1>Colaboradores</h1>
+    <ul>
+        {% for colaborador in colaboradores %}
+            <li>{{ colaborador.nombre }}</li>
+        {% empty %}
+            <li>No hay colaboradores registrados.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

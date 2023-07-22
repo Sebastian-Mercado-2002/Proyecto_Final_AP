@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+    <h1>Cuenta</h1>
+    {% if colaborador %}
+        <h2>Información de Colaborador</h2>
+        <!-- Muestra los detalles del colaborador si lo deseas -->
+        <p>Nombre: {{ colaborador.nombre }}</p>
+        <p>Correo electrónico: {{ colaborador.gmail }}</p>
+        <p>Bio: {{ colaborador.bio }}</p>
+        <br>
+        <a href="{% url 'logout' %}">Cerrar sesión</a>
+    {% else %}
+        <p>No eres un colaborador registrado. Regístrate como colaborador a continuación:</p>
+        <a href="{% url 'registro_colaborador' %}">Registrarse como colaborador</a>
+        <br>
+        <a href="{% url 'register' %}">Registrarse</a> 
+        <br>
+        <a href="{% url 'login' %}">Iniciar sesión</a>
+    {% endif %}
+{% endblock %}

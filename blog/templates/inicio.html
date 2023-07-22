@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %} 
+
+{% block contenido %}
+    {% block extra_css %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    {% endblock %}
+    <article>
+        <section>
+            <h1>Codecrusaders</h1>
+            <h2>Explorando el Futuro de la Inteligencia Artificial</h2>
+            <p>¡Bienvenidos a <b>Codecrusaders</b>! Aquí descubrirás un fascinante mundo de posibilidades 
+                en el ámbito de la Inteligencia Artificial (IA). Nuestra plataforma está dedicada a explorar 
+                la aplicación de la IA, su impacto en la educación y cómo está transformando el mundo laboral.</p>
+        </section>
+        <section>
+            <p>En nuestra sección de <b>Aplicación de la IA</b>, te sumergirás en los avances más recientes que han 
+                revolucionado distintas industrias. Desde la automatización inteligente que mejora la eficiencia 
+                operativa, hasta los asistentes virtuales que potencian la productividad y la interacción 
+                personalizada. También podrás adentrarte en el fascinante mundo del análisis de datos y
+                 cómo la IA nos ayuda a tomar decisiones basadas en información relevante.</p>
+        </section>
+        <section>
+            <p>En el apartado dedicado al <b>Impacto de la IA en la Educación</b>, descubrirás cómo esta tecnología 
+                está transformando la forma en que aprendemos. El aprendizaje personalizado se vuelve una 
+                realidad, adaptándose a las necesidades individuales y proporcionando retroalimentación 
+                instantánea. Los tutores virtuales estarán presentes para brindar asistencia en tiempo real y 
+                ofrecer recursos de aprendizaje interactivos. Además, verás cómo la automatización de tareas 
+                administrativas libera tiempo para los educadores y optimiza la experiencia en el aula.</p>
+        </section>
+        <section>
+            <p>Por último, en nuestra sección sobre el <b>Impacto de la IA en el Mundo Laboral</b>, te sumergirás
+                en un mundo de cambio y oportunidades. La automatización de trabajos rutinarios permite 
+                liberarnos de tareas repetitivas y enfocarnos en labores estratégicas. La colaboración 
+                humano-IA se convierte en una poderosa alianza para complementar habilidades y mejorar 
+                resultados. Además, exploraremos las nuevas oportunidades laborales que surgen con la 
+                creación de empleos relacionados con la IA y el impulso de industrias emergentes.
+            </p>
+        </section>
+        <section>
+            <p>Estamos emocionados de que te unas a nosotros en este viaje hacia el futuro de la IA. 
+                Explora nuestro contenido, participa en nuestra comunidad y mantente al tanto de las últimas
+                novedades en esta emocionante tecnología.
+            </p>
+        </section>
+    </article>
+    <aside>
+        <p>¡Bienvenidos al futuro de la Inteligencia Artificial en <b>Codecrusaders</b>!</p>
+        {% if user.is_authenticated %}
+        <a href="{% url 'crear_post' %}">Crear nuevo artículo</a>
+        {% endif %}
+    </aside>
+{% endblock %}

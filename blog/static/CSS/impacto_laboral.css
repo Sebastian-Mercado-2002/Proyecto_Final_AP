@@ -1,0 +1,98 @@
+/* Estilo base para el cuerpo del documento */
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #333; /* Color del texto */
+    background-image: url("static/css/fondos/laboral.png"); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Centrar el contenido */
+  #contenido {
+    max-width: 900px; 
+    margin: 20px auto;
+    padding: 20px;
+    position: relative; /* Para posicionar los elementos hijos relativos */
+    z-index: 1; /* Para asegurarnos de que el contenido esté por encima de la lámina */
+    background-color: rgba(255, 255, 255, 0.8); /* Color y opacidad del fondo del contenido */
+    border-radius: 10px; /* Radio de los bordes del contenido */
+  }
+  
+  /* Estilo para el título principal */
+  h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #F30957; /* Color del título principal */
+    margin-bottom: 10px;
+    text-align: center; /* Centrar el título */
+  }
+  
+  /* Estilo para títulos de los posts */
+  h3 {
+    font-size: 24px;
+    color: #F30957; /* Color del título de los posts */
+    margin-top: 20px;
+    text-align: center; /* Centrar los títulos de los posts */
+  }
+  
+  /* Estilo para párrafos */
+  p {
+    line-height: 1.6;
+    margin-bottom: 10px;
+    text-align: justify; 
+  }
+  
+  /* Estilo para imágenes */
+  img:not(.portada-imagen) {
+    max-width: 50%; /* Ajustar el tamaño máximo de las imágenes */
+    margin-bottom: 10px;
+    border: 2px solid #F30957; /* Color del marco */
+    border-radius: 5px; /* Radio de los bordes del marco */
+    padding: 10px; /* Ajustar el tamaño del marco */
+    display: block; /* Asegurar que las imágenes se centren correctamente */
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Estilo para formularios */
+  form {
+    margin-bottom: 20px;
+    text-align: center; /* Centrar el formulario */
+  }
+  
+  /* Estilo para el botón del formulario */
+  button {
+    background-color: #F30957; /* Color del botón */
+    color: #fff; /* Color del texto del botón */
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px; /* Radio de los bordes del botón */
+  }
+  
+  /* Estilo para enlaces */
+  a {
+    color: #0066cc; /* Color de los enlaces */
+    text-decoration: none;
+    margin-right: 10px;
+  }
+  
+  /* Estilo para los comentarios */
+  h4 {
+    font-size: 20px;
+    color: #cc6600; /* Color del título de los comentarios */
+    margin-top: 20px;
+    text-align: center; /* Centrar los títulos de los comentarios */
+  }
+  
+  /* Estilo para el marco de los comentarios */
+  p, h4 {
+    border: 2px solid #F30957; /* Color del marco */
+    border-radius: 10px; /* Radio de los bordes del marco */
+    padding: 15px; /* Ajustar el tamaño del marco */
+  }
+  

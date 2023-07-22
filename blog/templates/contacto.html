@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %} 
+
+{% block contenido %}
+    {% block extra_css %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/contacto.css' %}">
+    {% endblock %}
+    <article>
+        <section>
+            <h1>¡Nos encantaría escucharte!</h1>
+        </section>
+        <section>
+            <p>
+            Si tienes alguna pregunta, comentario o simplemente quieres saludarnos, no dudes en ponerte 
+            en contacto con nosotros. Estamos aquí para ayudarte de cualquier manera posible. 
+            Puedes comunicarte con nosotros a través de los siguientes medios:</p>
+
+            <ul>
+            <li>Correo electrónico: [correo electrónico de contacto]</li> 
+            <li>Teléfono: [número de teléfono]</li> 
+            <li>Redes sociales: [enlaces a nuestros perfiles en redes sociales]</li> 
+            </ul>
+
+            <p>Estamos disponibles de lunes a viernes, de 9:00am a 8:00pm. Haremos todo lo posible por 
+            responderte en un plazo de menos de 20 minutos. Tu opinión es muy importante 
+            para nosotros y nos esforzaremos por brindarte la mejor experiencia posible.
+            </p>
+        </section>
+    </article>
+    <aside>
+        <p>
+            ¡Esperamos con ansias escuchar de ti y establecer una conexión! Estamos abiertos a 
+            colaboraciones, sugerencias o cualquier otra oportunidad que desees compartir con nosotros.
+             Juntos, podemos lograr grandes cosas.
+        </p>
+    </aside>
+
+{% endblock %}
