@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+  {% block contenido %}
   <h1>Eliminar comentario</h1>
   <p>¿Estás seguro de que deseas eliminar este comentario?</p>
   <form method="POST">
@@ -8,4 +9,5 @@
     <button type="submit">Eliminar</button>
     <a href="{% url 'detalle_post' pk=comentario.post.pk %}">Cancelar</a>
   </form>
+  {% endblock %}
 {% endblock %}
