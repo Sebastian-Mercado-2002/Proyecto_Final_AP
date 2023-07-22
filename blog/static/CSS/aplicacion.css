@@ -21,6 +21,14 @@ body {
     background-color: rgba(255, 255, 255, 0.8); /* Color y opacidad del fondo del contenido */
     border-radius: 10px; /* Radio de los bordes del contenido */
   }
+  #contenido-aplicacion-ia{
+    width: 500px;
+    height: 500px;
+    margin: 20px auto;
+    background-image: url(../fondos/aplicacion.png);
+    background-size: cover;
+    background-position: center;
+  }
   
   /* Clase para el contenido */
   .contenido {
