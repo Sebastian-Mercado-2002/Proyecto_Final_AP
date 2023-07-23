@@ -15,7 +15,8 @@ def is_colaborador(user):
 
 def index(request):
     is_colaborador = request.user.groups.filter(name='Colaboradores').exists()
-    return render(request, 'index.html', {'is_colaborador': is_colaborador, 'user': request.user})
+    mensaje_creacion = "Crear nuevo artículo" if is_colaborador else "Solo los colaboradores pueden añadir artículos"
+    return render(request, 'index.html', {'is_colaborador': is_colaborador, 'user': request.user, 'mensaje_creacion': mensaje_creacion})
 
 def aplicacion_de_la_ia(request):
     try:
