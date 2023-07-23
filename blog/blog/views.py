@@ -120,6 +120,11 @@ def registrar_colaborador(request):
             bio = form.cleaned_data.get('bio')
             colaborador = Colaborador(usuario=user, nombre=nombre, gmail=gmail, bio=bio)
             colaborador.save()
+
+            # Asignar usuario al grupo de Colaboradores
+            colaboradores_group = Group.objects.get(name='Colaboradores')
+            colaboradores_group.user_set.add(user)
+
             return redirect('index')
     else:
         form = ColaboradorRegistroForm()
