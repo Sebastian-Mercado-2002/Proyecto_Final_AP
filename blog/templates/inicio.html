@@ -46,8 +46,10 @@
     </article>
     <aside>
         <p>¡Bienvenidos al futuro de la Inteligencia Artificial en <b>Codecrusaders</b>!</p>
-        {% if user.is_authenticated %}
-        <a href="{% url 'crear_post' %}">Crear nuevo artículo</a>
+        {% if is_colaborador %}
+            <a href="{% url 'crear_post' %}">{{ mensaje_creacion }}</a>
+        {% else %}
+            <p>{{ mensaje_creacion }}</p>
         {% endif %}
     </aside>
 {% endblock %}
