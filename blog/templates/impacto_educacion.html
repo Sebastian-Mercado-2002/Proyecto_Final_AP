@@ -22,10 +22,14 @@
         {% endif %}
         {% for comentario in post.comentarios.all %}
             <p>{{ comentario.contenido }}</p>
-            {% if user.is_authenticated and user == comentario.autor %}
-                <a href="{% url 'editar_comentario' pk=comentario.pk %}">Editar</a>
-                <a href="{% url 'eliminar_comentario' pk=comentario.pk %}">Eliminar</a>
-            {% endif %}
+            <p>Por: {{ comentario.autor.username }} - Fecha: {{ comentario.fecha|date:"d-m-Y H:i:s" }}</p>
+            {% if user.is_authenticated %}
+                    {% if es_colaborador %}
+                         <a href="{% url 'eliminar_comentario' pk=comentario.pk %}">Eliminar</a>
+                     {% elif user == comentario.autor %}
+                         <a href="{% url 'eliminar_comentario' pk=comentario.pk %}">Eliminar</a>
+                    {% endif %}
+                {% endif %}
         {% empty %}
             <p>No hay comentarios aún.</p>
         {% endfor %}
@@ -33,3 +37,4 @@
         <p>No hay posts disponibles.</p>
     {% endfor %}
 {% endblock %}
+
