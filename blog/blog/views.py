@@ -7,6 +7,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.http import HttpResponseForbidden
 
 # Función para comprobar si un usuario es un Colaborador
 def is_colaborador(user):
@@ -22,7 +23,9 @@ def aplicacion_de_la_ia(request):
         posts = Post.objects.filter(categoria=categoria)
     except Categoria.DoesNotExist:
         posts = []
-    return render(request, 'aplicacion_de_la_ia.html', {'posts': posts})
+        
+    es_colaborador = request.user.groups.filter(name='Colaboradores').exists()
+    return render(request, 'aplicacion_de_la_ia.html', {'posts': posts, 'es_colaborador': es_colaborador})
 
 def impacto_educacion(request):
     try:
@@ -30,7 +33,9 @@ def impacto_educacion(request):
         posts = Post.objects.filter(categoria=categoria)
     except Categoria.DoesNotExist:
         posts = []
-    return render(request, 'impacto_educacion.html', {'posts': posts, 'categoria': categoria})
+        
+    es_colaborador = request.user.groups.filter(name='Colaboradores').exists()
+    return render(request, 'impacto_educacion.html', {'posts': posts, 'categoria': categoria, 'es_colaborador': es_colaborador})
 
 def impacto_laboral(request):
     try:
@@ -38,7 +43,9 @@ def impacto_laboral(request):
         posts = Post.objects.filter(categoria=categoria)
     except Categoria.DoesNotExist:
         posts = []
-    return render(request, 'impacto_laboral.html', {'posts': posts, 'categoria': categoria})
+        
+    es_colaborador = request.user.groups.filter(name='Colaboradores').exists()
+    return render(request, 'impacto_laboral.html', {'posts': posts, 'categoria': categoria, 'es_colaborador': es_colaborador})
 
 
 def acerca_de(request):
@@ -130,6 +137,7 @@ def registrar_colaborador(request):
         form = ColaboradorRegistroForm()
     return render(request, 'registro_colaborador.html', {'form': form})
 
+
 def listar_colaboradores(request):
     colaboradores = Colaborador.objects.all()
     return render(request, 'colaboradores.html', {'colaboradores': colaboradores})
@@ -186,39 +194,43 @@ def agregar_comentario(request, pk):
     return render(request, 'detalle_post.html', {'post': post, 'form': form})
 
 
+# Vista para editar un comentario
 @login_required
 def editar_comentario(request, pk):
-    print("Editando comentario")
-    comentario = get_object_or_404(Comentario, pk=pk, autor=request.user)
-
-    if request.method == 'POST':
-        form = ComentarioForm(request.POST, instance=comentario)
-        if form.is_valid():
-            form.save()
-            messages.success(request, '¡Comentario editado correctamente!')
-            return redirect('detalle_post', pk=comentario.post.pk)
+    comentario = get_object_or_404(Comentario, pk=pk)
+    
+    # Verificar si el usuario es el autor del comentario o es un colaborador
+    if request.user == comentario.autor or request.user.groups.filter(name='Colaboradores').exists():
+        if request.method == 'POST':
+            form = ComentarioForm(request.POST, instance=comentario)
+            if form.is_valid():
+                form.save()
+                messages.success(request, '¡Comentario editado correctamente!')
+                return redirect('detalle_post', pk=comentario.post.pk)
+            else:
+                messages.error(request, 'Ha ocurrido un error. Por favor, verifica los campos del formulario.')
         else:
-            messages.error(request, 'Ha ocurrido un error. Por favor, verifica los campos del formulario.')
+            form = ComentarioForm(instance=comentario)
+    
+        return render(request, 'editar_comentario.html', {'form': form, 'comentario': comentario})
     else:
-        form = ComentarioForm(instance=comentario)
+        return HttpResponseForbidden("No tienes permiso para editar este comentario.")
 
-    print(form.errors)
-    print(request.POST)
-
-    return render(request, 'editar_comentario.html', {'form': form, 'comentario': comentario})
-
-
+# Vista para eliminar un comentario
 @login_required
+@user_passes_test(is_colaborador)
 def eliminar_comentario(request, pk):
-    print("Eliminando comentario")
-    comentario = get_object_or_404(Comentario, pk=pk, autor=request.user)
-
+    comentario = get_object_or_404(Comentario, pk=pk)
+    
+    # Verificar si el usuario es un colaborador
     if request.method == 'POST':
-        print(request.POST)
+        print(f"Colaborador: {request.user.username}")
+        print(f"Comentario Autor: {comentario.autor.username}")
+        
         comentario.delete()
         messages.success(request, '¡Comentario eliminado correctamente!')
         return redirect('detalle_post', pk=comentario.post.pk)
-
+    
     return render(request, 'eliminar_comentario.html', {'comentario': comentario})
 
 def detalle_post(request, pk):
@@ -232,7 +244,3 @@ def detalle_post(request, pk):
     else:
         form = ComentarioForm()
     return render(request, 'detalle_post.html', {'post': post, 'form': form})
-
-
-
-
