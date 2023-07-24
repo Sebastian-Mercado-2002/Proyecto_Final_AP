@@ -56,7 +56,9 @@ def contacto(request):
     return render(request, 'contacto.html')
 
 def inicio(request):
-    return render(request, 'inicio.html')
+    is_colaborador = request.user.groups.filter(name='Colaboradores').exists()
+    mensaje_creacion = "Crear nuevo artículo" if is_colaborador else "Solo los colaboradores pueden añadir artículos"
+    return render(request, 'inicio.html', {'is_colaborador': is_colaborador, 'user': request.user, 'mensaje_creacion': mensaje_creacion})
 
 def crear_post(request):
     if request.method == 'POST':
@@ -143,10 +145,9 @@ def listar_colaboradores(request):
     colaboradores = Colaborador.objects.all()
     return render(request, 'colaboradores.html', {'colaboradores': colaboradores})
 
-# Vistas para editar y eliminar artículos (requieren que el usuario sea un Colaborador)
-user_passes_test(is_colaborador)
+# Vista para editar un artículo
 def editar_articulo(request, pk):
-    post = get_object_or_404(Post, pk=pk, autor=request.user)
+    post = get_object_or_404(Post, pk=pk)
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES, instance=post)
         if form.is_valid():
@@ -156,15 +157,23 @@ def editar_articulo(request, pk):
             return redirect('index')
     else:
         form = PostForm(instance=post)
-    return render(request, 'editar_articulo.html', {'form': form})
+    return render(request, 'editar_post.html', {'form': form})
 
-@user_passes_test(is_colaborador)
+# Vista para eliminar un artículo
 def eliminar_articulo(request, pk):
-    post = get_object_or_404(Post, pk=pk, autor=request.user)
     if request.method == 'POST':
-        post.delete()
-        return redirect('index')
-    return render(request, 'eliminar_articulo.html', {'post': post})
+        # Buscar el artículo por su clave primaria (id) y eliminarlo
+        try:
+            post = Post.objects.get(id=pk)
+            post.delete()
+            messages.success(request, 'El artículo ha sido eliminado exitosamente.')
+            return redirect('aplicacion_de_la_ia')
+        except Post.DoesNotExist:
+            messages.error(request, 'El artículo que intentas eliminar no existe.')
+            return redirect('aplicacion_de_la_ia')
+    else:
+        # Si la petición no es POST, renderizar el template de confirmación de eliminación
+        return render(request, 'eliminar_post.html')
 
 @user_passes_test(is_colaborador)
 def editar_imagen(request, pk):
