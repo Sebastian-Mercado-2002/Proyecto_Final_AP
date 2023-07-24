@@ -19,6 +19,10 @@
                 {{ comentario_form.as_p }}
                 <button type="submit">Agregar comentario</button>
             </form>
+        {% if es_colaborador %}
+                <a href="{% url 'editar_post' pk=post.pk %}">Editar artículo</a>
+                <a href="{% url 'eliminar_post' pk=post.pk %}">Eliminar artículo</a>
+            {% endif %}
         {% endif %}
         {% for comentario in post.comentarios.all %}
             <p>{{ comentario.contenido }}</p>
