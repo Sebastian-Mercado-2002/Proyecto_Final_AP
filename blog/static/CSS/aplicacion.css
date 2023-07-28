@@ -3,14 +3,19 @@ body {
     font-family: Arial, sans-serif;
     font-size: 16px;
     color: #333; /* Color del texto */
-    background-image: url("static/css/fondos/aplicacion.png"); 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     margin: 0;
     padding: 0;
   }
   
+  #contenido-aplicacion-ia{
+    width: auto;
+    height: auto;
+    margin: auto;
+    background-image: url(../fondos/aplicacion.png);
+    background-size: contain;
+    background-position: auto;
+  }
+
   /* Centrar el contenido */
   #contenido {
     max-width: 900px;
@@ -20,14 +25,6 @@ body {
     z-index: 1; /* Para asegurarnos de que el contenido esté por encima de la lámina */
     background-color: rgba(255, 255, 255, 0.8); /* Color y opacidad del fondo del contenido */
     border-radius: 10px; /* Radio de los bordes del contenido */
-  }
-  #contenido-aplicacion-ia{
-    width: 500px;
-    height: 500px;
-    margin: 20px auto;
-    background-image: url(../fondos/aplicacion.png);
-    background-size: cover;
-    background-position: center;
   }
   
   /* Clase para el contenido */
@@ -55,6 +52,7 @@ body {
     line-height: 1.6;
     margin-bottom: 10px;
     text-align: justify;
+    background-color: #fff;
   }
   
   /* Estilo para imágenes */
@@ -101,6 +99,9 @@ img:not(.portada-imagen) {
   /* Estilo para el marco de los comentarios */
   p, h4 {
     border: 2px solid #009900; /* Color del marco */
+    border-radius: 5px; /* Radio de los bordes del marco */
+    padding: 10px;
+  }
     border-radius: 5px; /* Radio de los bordes del marco */
     padding: 10px;
   }
