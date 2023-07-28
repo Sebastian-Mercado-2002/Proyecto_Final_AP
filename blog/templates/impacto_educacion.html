@@ -5,8 +5,10 @@
     {% block extra_css %}
         <link rel="stylesheet" type="text/css" href="{% static 'css/impacto_educacion.css' %}">
     {% endblock %}
-    <h1>Impacto de la IA en educación</h1>
-    {% for post in posts %}
+    <div id="contenido-impacto-educacion" class="contenido">
+    <div id="contenido" class="contenido">
+        <h1>Impacto de la IA en educación</h1>
+        {% for post in posts %}
         <h3>{{ post.titulo }}</h3>
         <p>{{ post.texto }}</p>
         {% if post.imagen %}
@@ -19,9 +21,9 @@
                 {{ comentario_form.as_p }}
                 <button type="submit">Agregar comentario</button>
             </form>
-        {% if es_colaborador %}
-                <a href="{% url 'editar_post' pk=post.pk %}">Editar artículo</a>
-                <a href="{% url 'eliminar_post' pk=post.pk %}">Eliminar artículo</a>
+            {% if es_colaborador %}
+                <a href="{% url 'editar_post' pk=post.pk %}" class="boton_editar">Editar artículo</a>
+                <a href="{% url 'eliminar_post' pk=post.pk %}" class="boton_eliminar">Eliminar artículo</a>
             {% endif %}
         {% endif %}
         {% for comentario in post.comentarios.all %}
@@ -37,8 +39,10 @@
         {% empty %}
             <p>No hay comentarios aún.</p>
         {% endfor %}
-    {% empty %}
+        {% empty %}
         <p>No hay posts disponibles.</p>
-    {% endfor %}
+        {% endfor %}
+    </div>
+    </div>
 {% endblock %}
 
