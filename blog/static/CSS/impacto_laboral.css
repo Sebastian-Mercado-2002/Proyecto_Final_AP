@@ -3,14 +3,19 @@ body {
     font-family: Arial, sans-serif;
     font-size: 16px;
     color: #333; /* Color del texto */
-    background-image: url("static/css/fondos/laboral.png"); 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     margin: 0;
     padding: 0;
   }
   
+  #contenido-impacto-laboral{
+    width: auto;
+    height: auto;
+    margin: auto;
+    background-image: url(../fondos/laboral.png);
+    background-size: contain;
+    background-position: auto;
+  }
+
   /* Centrar el contenido */
   #contenido {
     max-width: 900px; 
@@ -89,10 +94,16 @@ body {
     text-align: center; /* Centrar los títulos de los comentarios */
   }
   
+  /* Estilo para los botones de edición */
+  .boton_editar, .boton_eliminar {
+  text-align: center;
+  }
+
   /* Estilo para el marco de los comentarios */
   p, h4 {
     border: 2px solid #F30957; /* Color del marco */
     border-radius: 10px; /* Radio de los bordes del marco */
     padding: 15px; /* Ajustar el tamaño del marco */
   }
+  
   
