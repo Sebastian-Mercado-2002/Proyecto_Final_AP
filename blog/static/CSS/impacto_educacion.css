@@ -3,16 +3,22 @@ body {
     font-family: Arial, sans-serif;
     font-size: 16px;
     color: #333; /* Color del texto */
-    background-image: url("static/css/fondos/educacion.png"); 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     margin: 0;
     padding: 0;
   }
+
+  #contenido-impacto-educacion{
+    width: auto;
+    height: auto;
+    margin: auto;
+    background-image: url(../fondos/educacion.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
   
   /* Centrar el contenido */
-  #contenido {
+  .contenido {
     max-width: 900px; 
     margin: 20px auto;
     padding: 20px;
@@ -20,6 +26,7 @@ body {
     z-index: 1; /* Para asegurarnos de que el contenido esté por encima de la lámina */
     background-color: rgba(255, 255, 255, 0.8); /* Color y opacidad del fondo del contenido */
     border-radius: 10px; /* Radio de los bordes del contenido */
+    text-align: center;
   }
   
   /* Estilo para el título principal */
@@ -44,6 +51,7 @@ body {
     line-height: 1.6;
     margin-bottom: 10px;
     text-align: justify; 
+    background-color: #fff;
   }
   
   /* Estilo para imágenes */
@@ -72,6 +80,7 @@ body {
     border: none;
     cursor: pointer;
     border-radius: 5px; /* Radio de los bordes del botón */
+    text-align: center;
   }
   
   /* Estilo para enlaces */
@@ -79,6 +88,7 @@ body {
     color: #0066cc; /* Color de los enlaces */
     text-decoration: none;
     margin-right: 10px;
+    text-align: center;
   }
   
   /* Estilo para los comentarios */
@@ -87,12 +97,21 @@ body {
     color: #cc6600; /* Color del título de los comentarios */
     margin-top: 20px;
     text-align: center; /* Centrar los títulos de los comentarios */
+    background-color: #fff;
   }
-  
+
+  /* Estilo para los botones de edición */
+  .boton_editar, .boton_eliminar {
+    text-align: center;
+  }
+
   /* Estilo para el marco de los comentarios */
   p, h4 {
     border: 2px solid #951BD2; /* Color del marco */
     border-radius: 5px; /* Radio de los bordes del marco */
     padding: 10px;
   }
+  
+  }
+  
   

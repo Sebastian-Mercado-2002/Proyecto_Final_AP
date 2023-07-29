@@ -5,6 +5,7 @@
     {% block extra_css %}
         <link rel="stylesheet" type="text/css" href="{% static 'css/aplicacion.css' %}">
     {% endblock %}
+    <div id="contenido-aplicacion-ia" class="contenido">
     <div id="contenido" class="contenido">
         <h1>Aplicación de la IA</h1>
         {% for post in posts %}
@@ -20,7 +21,7 @@
                     {{ comentario_form.as_p }}
                     <button type="submit">Agregar comentario</button>
                 </form>
-            {% if es_colaborador %}
+                {% if es_colaborador %}
                 <a href="{% url 'editar_post' pk=post.pk %}">Editar artículo</a>
                 <a href="{% url 'eliminar_post' pk=post.pk %}">Eliminar artículo</a>
             {% endif %}
@@ -42,5 +43,7 @@
             <p>No hay posts disponibles.</p>
         {% endfor %}
     </div>
+    </div>
 {% endblock %}
+
 

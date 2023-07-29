@@ -9,6 +9,16 @@ article {
     padding: 20px;
 }
 
+#contenido-index{
+    width: auto;
+    height: auto;
+    margin: auto;
+    background-image: url(../fondos/inicio.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 /* Estilos para los encabezados */
 h1, h2 {
     font-size: 2.5rem;
@@ -45,8 +55,3 @@ aside a {
     margin-top: 10px;
 }
 
-body {
-    background-image: url("{% static 'fondos/inicio.png' %}");
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
