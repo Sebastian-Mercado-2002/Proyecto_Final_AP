@@ -11,7 +11,7 @@ body {
     width: auto;
     height: auto;
     margin: auto;
-    background-image: url(../fondos/educacion.png);
+    background-image: url(../fondos/educacion.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -51,6 +51,7 @@ body {
     line-height: 1.6;
     margin-bottom: 10px;
     text-align: justify; 
+    background-color: #fff;
   }
   
   /* Estilo para imágenes */
@@ -96,11 +97,12 @@ body {
     color: #cc6600; /* Color del título de los comentarios */
     margin-top: 20px;
     text-align: center; /* Centrar los títulos de los comentarios */
+    background-color: #fff;
   }
 
   /* Estilo para los botones de edición */
   .boton_editar, .boton_eliminar {
-  text-align: center;
+    text-align: center;
   }
 
   /* Estilo para el marco de los comentarios */
@@ -108,6 +110,8 @@ body {
     border: 2px solid #951BD2; /* Color del marco */
     border-radius: 5px; /* Radio de los bordes del marco */
     padding: 10px;
+  }
+  
   }
   
   
