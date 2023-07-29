@@ -6,7 +6,7 @@
         <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
     {% endblock %}
     <div id="contenido-index" class="contenido">
-    <article>
+        <article>
         <section>
             <h1>Codecrusaders</h1>
             <h2>Explorando el Futuro de la Inteligencia Artificial</h2>
@@ -44,15 +44,16 @@
                 novedades en esta emocionante tecnología.
             </p>
         </section>
-    </article>
-    <aside>
+        </article>
+        <aside>
         <p>¡Bienvenidos al futuro de la Inteligencia Artificial en <b>Codecrusaders</b>!</p>
         {% if is_colaborador %}
             <a href="{% url 'crear_post' %}">{{ mensaje_creacion }}</a>
         {% else %}
             <p>{{ mensaje_creacion }}</p>
         {% endif %}
-    </aside>
-    </div>
+        </aside>
+        </div>
 {% endblock %}
+
 
