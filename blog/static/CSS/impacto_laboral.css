@@ -12,8 +12,9 @@ body {
     height: auto;
     margin: auto;
     background-image: url(../fondos/laboral.png);
-    background-size: contain;
-    background-position: auto;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
   /* Centrar el contenido */
@@ -84,6 +85,7 @@ body {
     color: #0066cc; /* Color de los enlaces */
     text-decoration: none;
     margin-right: 10px;
+    text-align: center;
   }
   
   /* Estilo para los comentarios */
@@ -92,11 +94,12 @@ body {
     color: #cc6600; /* Color del título de los comentarios */
     margin-top: 20px;
     text-align: center; /* Centrar los títulos de los comentarios */
+    background-color: #fff;
   }
   
   /* Estilo para los botones de edición */
   .boton_editar, .boton_eliminar {
-  text-align: center;
+    text-align: center;
   }
 
   /* Estilo para el marco de los comentarios */
@@ -105,5 +108,3 @@ body {
     border-radius: 10px; /* Radio de los bordes del marco */
     padding: 15px; /* Ajustar el tamaño del marco */
   }
-  
-  
