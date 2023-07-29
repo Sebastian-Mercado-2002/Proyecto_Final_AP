@@ -22,20 +22,24 @@
                 <button type="submit">Agregar comentario</button>
             </form>
             {% if es_colaborador %}
+                <div style="text-align: center;">
                 <a href="{% url 'editar_post' pk=post.pk %}" class="boton_editar">Editar artículo</a>
                 <a href="{% url 'eliminar_post' pk=post.pk %}" class="boton_eliminar">Eliminar artículo</a>
+                </div>              
             {% endif %}
         {% endif %}
         {% for comentario in post.comentarios.all %}
             <p>{{ comentario.contenido }}</p>
             <p>Por: {{ comentario.autor.username }} - Fecha: {{ comentario.fecha|date:"d-m-Y H:i:s" }}</p>
-            {% if user.is_authenticated %}
-                    {% if es_colaborador %}
-                         <a href="{% url 'eliminar_comentario' pk=comentario.pk %}">Eliminar</a>
-                     {% elif user == comentario.autor %}
-                         <a href="{% url 'eliminar_comentario' pk=comentario.pk %}">Eliminar</a>
-                    {% endif %}
+            <div style="text-align: center;">
+                {% if user.is_authenticated %}
+                  {% if es_colaborador %}
+                    <a href="{% url 'eliminar_comentario' pk=comentario.pk %}">Eliminar</a>
+                  {% elif user == comentario.autor %}
+                    <a href="{% url 'eliminar_comentario' pk=comentario.pk %}">Eliminar</a>
+                  {% endif %}
                 {% endif %}
+              </div>              
         {% empty %}
             <p>No hay comentarios aún.</p>
         {% endfor %}
@@ -45,5 +49,3 @@
     </div>
     </div>
 {% endblock %}
-
-
